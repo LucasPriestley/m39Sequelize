@@ -1,7 +1,11 @@
 const yargs = require("yargs");
 const { sequelize } = require("./db/connection");
-const { createMovie, findMovie, updateMovie, } = require("./movie/function");
-
+const {
+  createMovie,
+  findMovie,
+  updateMovie,
+  deleteMovie,
+} = require("./movie/function");
 
 const app = async (yargsObj) => {
   await sequelize.sync({ alter: true });
@@ -17,6 +21,7 @@ const app = async (yargsObj) => {
     await updateMovie(updateObj, filterObj);
     //update a movie from db
   } else if (yargsObj.delete) {
+    await deleteMovie({ title: yargsObj.title });
     //delete movie from db
   } else {
     console.log("Incorrect command");

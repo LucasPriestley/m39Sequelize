@@ -14,7 +14,7 @@ exports.findMovie = async (movieObj) => {
   try {
     // console.log(movieObj);
     const findMovie = await Movie.findAll({
-        where: movieObj 
+      where: movieObj,
     });
     console.log(findMovie);
   } catch (error) {
@@ -22,14 +22,25 @@ exports.findMovie = async (movieObj) => {
   }
 };
 
-exports.updateMovie = async (updateObj, filterObj, movieObj) => {
-    try {
-      console.log("U");
-      const updateMovie = await Movie.update({
-        where: movieObj
+exports.updateMovie = async (updateObj, filterObj) => {
+  try {
+    console.log(updateObj);
+    console.log(filterObj);
+    const updateMovie = await Movie.update(updateObj, {
+      where: filterObj,
     });
-  
-      console.log(updateMovie);
+
+    console.log(updateMovie);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+exports.deleteMovie = async (movieObj) => {
+    try {
+      console.log("Deleted");
+      await Movie.destroy({where: movieObj});
     } catch (error) {
       console.log(error);
     }
