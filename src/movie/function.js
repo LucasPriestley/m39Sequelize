@@ -22,20 +22,45 @@ exports.findMovie = async (movieObj) => {
   }
 };
 
-exports.updateMovie = async (updateObj, filterObj) => {
+exports.findMovie2 = async (movieObj) => {
   try {
-    console.log(updateObj);
-    console.log(filterObj);
-    const updateMovie = await Movie.update(updateObj, {
-      where: filterObj,
+    // console.log(movieObj);
+    const findMovie2 = await Movie.findAll({
+      where: movieObj,
     });
-
-    console.log(updateMovie);
+    console.log(findMovie2);
   } catch (error) {
     console.log(error);
   }
 };
 
+exports.updateTitle = async (updateObj, filterObj) => {
+  try {
+    console.log(updateObj);
+    console.log(filterObj);
+    const updateTitle = await Movie.update(updateObj, {
+      where: filterObj,
+    });
+ 
+    console.log(updateTitle);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.updateActor = async (updateObj, filterObj) => {
+  try {
+    console.log(updateObj);
+    console.log(filterObj);
+    const updateActor = await Movie.update(updateObj, {
+      where: filterObj,
+    });
+
+    console.log(updateActor);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 exports.deleteMovie = async (movieObj) => {
     try {
